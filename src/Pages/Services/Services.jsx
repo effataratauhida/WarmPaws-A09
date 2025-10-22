@@ -6,9 +6,7 @@ const Services = () => {
 
    const services = useLoaderData();
 
-   
-      
-    return (
+   return (
         <div className='bg-[#D5DEEF] py-10'>
             <div className='max-w-11/12 mx-auto'>
             <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Our Services</h2>

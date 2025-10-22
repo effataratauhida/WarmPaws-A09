@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.webp'
 import '../Header/Header.css'
+import { IoPersonCircle } from 'react-icons/io5';
 
 const Navbar = () => {
     return (
@@ -55,14 +56,17 @@ const Navbar = () => {
                         
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end gap-3">
+                    <IoPersonCircle size={40} />
                     <button  
                     className='hover:scale-105 cursor-pointer rounded-sm 
                     bg-gradient-to-r from-[#1E2E4F] to-[#395886] flex items-center 
-                    gap-1.5 md:gap-2.5 py-2 px-3 md:py-3 md:px-4'>
-                    {/* <img src= {gitImg} alt="" /> */}
-                    <p className='text-white font-semibold text-base'> Login / Register</p>
+                    gap-1.5 md:gap-2.5 py-2 px-3 md:py-2 md:px-6'>
+
+                    
+                    <p className='text-white font-semibold text-base'> Login</p>
                     </button>
+                    
                 </div>
             </div>
         </div>

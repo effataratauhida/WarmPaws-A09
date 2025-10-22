@@ -6,6 +6,8 @@ import Home from '../Pages/Home/Home';
 import Services from '../Pages/Services/Services';
 import ServiceDetails from '../Pages/Service Details/ServiceDetails';
 import Contact from '../Pages/Contact Us/Contact';
+import Login from '../Pages/Login/Login';
+import Register from '../Pages/Register/Register';
 
 
 export const router = createBrowserRouter([
@@ -32,6 +34,20 @@ export const router = createBrowserRouter([
         {
           path: '/contact',
           element: <Contact></Contact>
+        },
+        {
+          path: '/auth',
+          element: <p>authentication</p>,
+          children: [
+            {
+              path: 'auth/login',
+              element: <Login></Login>
+            },
+            {
+              path: 'auth/register',
+              element: <Register></Register>
+            }
+          ]
         }
     ]
   },
