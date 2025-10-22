@@ -2,6 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import ratingsIcon from '../../assets/icon-ratings.png'
 import winterTips from '../../assets/winter-tips1.jpg'
+import petDentist1 from '../../assets/pet-dentist1.jpg'
+import petDentist2 from '../../assets/pet-dentist2.jpg'
+import dogGroomer from '../../assets/dog-groomer.jpg'
+import veterinarian from '../../assets/veterinarian.jpg'
+
 
 
 const WinterCareServices = () => {
@@ -80,6 +85,31 @@ const WinterCareServices = () => {
 
 
             {/* Meet Our Expert Vets section */}
+
+            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center pt-20'>Meet Our Expert Vets</h2>
+            <p className='text-center mt-8 font-semibold text-lg text-[#2d3a4f]'>Each specialist is dedicated to understanding your goals, ensuring treatments are tailored to your pets unique beauty needs</p>
+            <div className='grid grid-cols-4 gap-4 mt-10'>
+                <div className='bg-white p-4 rounded-sm text-center'>
+                    <img src={petDentist1} alt="" className='rounded-sm' />
+                    <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Fabio Santoro</h4>
+                    <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Pet dentist</p>
+                </div>
+                <div className='bg-white p-4 rounded-sm text-center'>
+                    <img src={petDentist1} alt="" className='rounded-sm' />
+                    <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Fabio Santoro</h4>
+                    <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Pet dentist</p>
+                </div>
+                <div className='bg-white p-4 rounded-sm text-center'>
+                    <img src={petDentist1} alt="" className='rounded-sm' />
+                    <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Fabio Santoro</h4>
+                    <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Pet dentist</p>
+                </div>
+                <div className='bg-white p-4 rounded-sm text-center'>
+                    <img src={petDentist1} alt="" className='rounded-sm' />
+                    <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Fabio Santoro</h4>
+                    <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Pet dentist</p>
+                </div>
+            </div>
             </div>
         </div>
     );
