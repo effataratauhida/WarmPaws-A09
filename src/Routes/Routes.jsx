@@ -8,6 +8,8 @@ import ServiceDetails from '../Pages/Service Details/ServiceDetails';
 import Contact from '../Pages/Contact Us/Contact';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
+import AuthLayout from '../layouts/AuthLayout';
+
 
 
 export const router = createBrowserRouter([
@@ -35,20 +37,21 @@ export const router = createBrowserRouter([
           path: '/contact',
           element: <Contact></Contact>
         },
-        {
+        
+    ]
+  },
+  {
           path: '/auth',
-          element: <p>authentication</p>,
+          element: <AuthLayout></AuthLayout>,
           children: [
             {
-              path: 'auth/login',
+              path: 'login',
               element: <Login></Login>
             },
             {
-              path: 'auth/register',
+              path: 'register',
               element: <Register></Register>
             }
           ]
         }
-    ]
-  },
 ]);

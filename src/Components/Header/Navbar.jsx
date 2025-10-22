@@ -58,14 +58,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-3">
                     <IoPersonCircle size={40} />
-                    <button  
+                    <Link to="auth/login" 
                     className='hover:scale-105 cursor-pointer rounded-sm 
                     bg-gradient-to-r from-[#1E2E4F] to-[#395886] flex items-center 
                     gap-1.5 md:gap-2.5 py-2 px-3 md:py-2 md:px-6'>
 
                     
                     <p className='text-white font-semibold text-base'> Login</p>
-                    </button>
+                    </Link>
                     
                 </div>
             </div>
