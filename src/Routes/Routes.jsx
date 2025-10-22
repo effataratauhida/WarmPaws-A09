@@ -4,6 +4,7 @@ import Root from '../Pages/Root/Root';
 import Error from '../Pages/Error Page/Error';
 import Home from '../Pages/Home/Home';
 import Services from '../Pages/Services/Services';
+import ServiceDetails from '../Pages/Service Details/ServiceDetails';
 
 
 export const router = createBrowserRouter([
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
             path: '/services',
             element: <Services></Services>,
             loader: () => fetch("/WinterCareData.json").then(res => res.json()),
+        }, 
+        {
+          path: '/serviceDetails/:id',
+          element: <ServiceDetails></ServiceDetails>,
+          loader: () => fetch("/WinterCareData.json").then(res => res.json()),
         }
     ]
   },

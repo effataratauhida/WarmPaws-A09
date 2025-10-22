@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../../Components/Header/Navbar';
 import errorImg from '../../assets/errorImg.jpg'
+import Footer from '../../Components/Footer/Footer';
 
 const Error = () => {
     return (
@@ -20,7 +21,8 @@ const Error = () => {
                 
             </div>
         </div>
-        </div>
+           </div>
+           <Footer></Footer>
         </>
     );
 };
