@@ -31,8 +31,7 @@ const ServiceDetails = () => {
     return (
          <div className='bg-[#D5DEEF] pt-10 pb-20'>
 
-            
-                <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Service in Details</h2>
+            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Service in Details</h2>
 
                 <div className=' mt-10 py-10 bg-white'>
                     <div className='max-w-11/12 mx-auto'>

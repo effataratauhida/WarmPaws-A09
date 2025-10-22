@@ -5,6 +5,7 @@ import Error from '../Pages/Error Page/Error';
 import Home from '../Pages/Home/Home';
 import Services from '../Pages/Services/Services';
 import ServiceDetails from '../Pages/Service Details/ServiceDetails';
+import Contact from '../Pages/Contact Us/Contact';
 
 
 export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
           path: '/serviceDetails/:id',
           element: <ServiceDetails></ServiceDetails>,
           loader: () => fetch("/WinterCareData.json").then(res => res.json()),
+        },
+        {
+          path: '/contact',
+          element: <Contact></Contact>
         }
     ]
   },
