@@ -1,0 +1,20 @@
+ul li a{
+    font-weight: 500;
+    color: #31487A;
+    font-size: 16px;
+    
+} 
+
+
+ul a.active {
+    text-decoration: underline;
+    text-decoration-color: #395886;
+    text-underline-offset: 4px;
+    background: linear-gradient(to right, #26658C);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    font-size: 18px;
+}
+ 

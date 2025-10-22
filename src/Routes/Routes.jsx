@@ -1,11 +1,27 @@
 import React from 'react';
 import { createBrowserRouter } from "react-router";
 import Root from '../Pages/Root/Root';
+import Error from '../Pages/Error Page/Error';
+import Home from '../Pages/Home/Home';
+import Services from '../Pages/Services/Services';
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>
+    element: <Root></Root>,
+    errorElement: <Error></Error>,
+    children: [
+        {
+            index: true,
+            loader: () => fetch("/WinterCareData.json").then(res => res.json()),
+            element: <Home></Home>
+        },
+        {
+            path: '/services',
+            element: <Services></Services>,
+            loader: () => fetch("/WinterCareData.json").then(res => res.json()),
+        }
+    ]
   },
 ]);

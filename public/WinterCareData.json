@@ -1,0 +1,74 @@
+[
+  {
+    "serviceId": 1,
+    "serviceName": "Winter Coat Fitting for Dogs",
+    "providerName": "PawCare Studio",
+    "providerEmail": "info@pawcare.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Custom coat fitting and warm outfit options to keep your dog comfortable in the cold.",
+    "image": "https://i.postimg.cc/CLX0J9LQ/0008362f1a3e8e0e63dda43725acda47.jpg",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 2,
+    "serviceName": "Winter Grooming & Paw Treatment",
+    "providerName": "CozyPets Grooming",
+    "providerEmail": "hello@cozypets.com",
+    "price": 30,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Professional grooming with moisturizing paw balm and winter-safe shampoo.",
+    "image": "https://i.postimg.cc/mDfNwL0N/be9d8bf8dcbc7725983f12ea4c0f5eac.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 3,
+    "serviceName": "Warm Bedding & Blanket Setup",
+    "providerName": "SnuggleTails Care",
+    "providerEmail": "contact@snuggletails.com",
+    "price": 20,
+    "rating": 4.7,
+    "slotsAvailable": 5,
+    "description": "Soft fleece bedding and heated blanket setup for your pet’s cozy winter nights.",
+    "image": "https://i.postimg.cc/8cn7Zw7Q/7b25d4f81371cb14da768db8a6c3c929.jpg",
+    "category": "Comfort"
+  },
+  {
+    "serviceId": 4,
+    "serviceName": "Winter Health Checkup",
+    "providerName": "FurWell Vet Clinic",
+    "providerEmail": "support@furwellvet.com",
+    "price": 40,
+    "rating": 5.0,
+    "slotsAvailable": 2,
+    "description": "Comprehensive winter health and immunity checkup by certified veterinarians.",
+    "image": "https://i.postimg.cc/Dyk0wW1p/e7625411d29c16343b960edc01fca131.jpg",
+    "category": "Health"
+  },
+  {
+    "serviceId": 5,
+    "serviceName": "Pet Nutrition & Winter Diet Plan",
+    "providerName": "HealthyPaws Nutrition",
+    "providerEmail": "nutrition@healthypaws.com",
+    "price": 28,
+    "rating": 4.8,
+    "slotsAvailable": 4,
+    "description": "Customized winter diet plans with rich nutrients to keep pets active and healthy.",
+    "image": "https://i.postimg.cc/vZTJRhDj/12e74a9453d6923284c701dafc89c9ba.jpg",
+    "category": "Nutrition"
+  },
+  {
+    "serviceId": 6,
+    "serviceName": "Winter Walk Assistance & Booties",
+    "providerName": "ArcticPaw Services",
+    "providerEmail": "care@arcticpaw.com",
+    "price": 22,
+    "rating": 4.6,
+    "slotsAvailable": 6,
+    "description": "Guided outdoor walks and paw booties to protect pets from icy surfaces.",
+    "image": "https://i.postimg.cc/52dchxTZ/pet-walk-booties.jpg",
+    "category": "Outdoor"
+  }
+]
