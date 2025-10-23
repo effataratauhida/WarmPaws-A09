@@ -17,7 +17,9 @@ const Login = () => {
           <input type="password" className="input" placeholder="Password" />
           <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn bg-gradient-to-r from-[#1E2E4F] to-[#395886] text-white mt-4">Login</button>
-          <button className='btn mt-4 w-full px-4 py-3'><FcGoogle size={24} /> Continue with Google</button>
+
+                 <p className='text-center text-[#304c77] text-base font-medium mt-2'>or,</p>
+          <button className='btn mt-2 w-full px-4 py-3'><FcGoogle size={24} /> Continue with Google</button>
 
           <p className='text-center text-[#304c77] text-base font-medium mt-2'>Don't have an account?{" "}<Link 
           to='/auth/register' className='text-red-600'>Register Now</Link></p>

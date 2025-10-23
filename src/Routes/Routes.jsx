@@ -5,7 +5,7 @@ import Error from '../Pages/Error Page/Error';
 import Home from '../Pages/Home/Home';
 import Services from '../Pages/Services/Services';
 import ServiceDetails from '../Pages/Service Details/ServiceDetails';
-import Contact from '../Pages/Contact Us/Contact';
+
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import AuthLayout from '../layouts/AuthLayout';
@@ -33,11 +33,7 @@ export const router = createBrowserRouter([
           element: <ServiceDetails></ServiceDetails>,
           loader: () => fetch("/WinterCareData.json").then(res => res.json()),
         },
-        {
-          path: '/contact',
-          element: <Contact></Contact>
-        },
-        
+         
     ]
   },
   {

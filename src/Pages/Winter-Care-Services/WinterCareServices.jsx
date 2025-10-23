@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import ratingsIcon from '../../assets/icon-ratings.png'
 import winterTips from '../../assets/winter-tips1.jpg'
@@ -6,25 +6,32 @@ import petDentist1 from '../../assets/pet-dentist1.jpg'
 import vet from '../../assets/vet.jpg'
 import dogGroomer from '../../assets/dog-groomer.jpg'
 import catGroomer from '../../assets/cat-groomer.jpg'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const WinterCareServices = () => {
  
      const services = useLoaderData();
 
-    
+    useEffect(() => {
+        AOS.init({
+        duration: 1000, 
+        once: true,
+       });
+    }, []);
  
        return (
-        <div className='bg-[#D5DEEF]'>
-            <div className='max-w-11/12 mx-auto py-20'>
-                <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Popular Winter Care Services</h2>
+        <div className='bg-[#D5DEEF] '>
+            <div className='max-w-11/12 mx-auto py-14'>
+                <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Popular Winter Care Services</h2>
 
                 {/*  card layout */}
             <div className=' pt-14'>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {services.map((service) => (
-                    <div key={service.serviceId} className='bg-white p-4 rounded-sm h-[680px] '>
+                    <div key={service.serviceId}   data-aos="fade-up"
+                    className='bg-white p-4 rounded-sm h-[680px] '>
                             <img src={service.image} alt="" className='w-full rounded-lg h-3/4'/>
                                 <h2 className='font-bold text-xl text-[#31487A] mt-4'>{service.serviceName}</h2>
                                 <div className='flex items-center justify-between mt-4'>
@@ -50,12 +57,13 @@ const WinterCareServices = () => {
                 ))}
             </div>
             </div>
-
+          </div>
             {/* Winter Care Tips for Pets section */}
 
-            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center pt-20'>Winter Care Tips for Pets</h2>
-            <div className='flex gap-5 mt-14'>
-                <img src={winterTips} alt="" className='w-1/3 rounded-sm ' />
+            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Winter Care Tips for Pets</h2>
+            <div className=' mt-14 bg-white py-14'   data-aos="fade-up">
+                <div className='max-w-11/12 mx-auto flex justify-center items-center gap-10'>
+                       <img src={winterTips} alt="" className='w-1/3 rounded-sm ' />
                 <div>
                     <ul>
                         <li>
@@ -84,14 +92,18 @@ const WinterCareServices = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
+                </div>
+                
+            </div>  
 
 
             {/* Meet Our Expert Vets section */}
-
-            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center pt-20'>Meet Our Expert Vets</h2>
+            <div className='max-w-11/12 mx-auto'>
+                      <h2  
+                      className='text-3xl md:text-5xl font-bold text-[#31487A] text-center pt-20'>Meet Our Expert Vets</h2>
             <p className='text-center mt-8 font-semibold text-lg text-[#2d3a4f]'>Each specialist is dedicated to understanding your goals, ensuring treatments are tailored to your pets unique beauty needs</p>
-            <div className='grid lg:grid-cols-4 gap-4 mt-10 grid-cols-1 sm:grid-cols-2 '>
+            <div className='grid lg:grid-cols-4 gap-4 mt-10 grid-cols-1 sm:grid-cols-2 '
+            data-aos="fade-up">
                 <div className='bg-white p-4 rounded-sm text-center'>
                     <img src={petDentist1} alt="" className='rounded-sm' />
                     <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Fabio Santoro</h4>
@@ -114,6 +126,8 @@ const WinterCareServices = () => {
                 </div>
             </div>
             </div>
+            
+          
         </div>
     );
 };

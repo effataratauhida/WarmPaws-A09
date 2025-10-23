@@ -1,28 +1,44 @@
-import React from 'react';
-import Navbar from '../../Components/Header/Navbar';
+import React, { useState } from 'react';
 import errorImg from '../../assets/errorImg.jpg'
-import Footer from '../../Components/Footer/Footer';
+import { useSpring, animated } from '@react-spring/web';
+
 
 const Error = () => {
+
+    // useSpring
+
+    const [hovered, setHovered] = useState(false);
+    const buttonAnimation = useSpring({
+        from: { opacity: 0, transform: 'scale(0.9)' },
+        to: { 
+            opacity: 1, 
+            transform: hovered ? 'scale(1.05)' : 'scale(1)',
+        },
+        config: { tension: 200, friction: 10 },
+    });
+
     return (
         <>
-           <Navbar></Navbar> 
-           <div className='bg-[#D5DEEF]'>
-            <div className='max-w-11/12 mx-auto flex flex-col items-center justify-center pt-10 pb-18'>
-            <img src={errorImg} alt="" />
-            <div className='mt-4 text-center'>
+          
+           <div >
+            <div className='max-w-11/12 mx-auto flex flex-col items-center justify-center pb-10'>
+                <img src={errorImg} alt="" />
+            <div className='mt-2 text-center'>
                 <h1 className='text-[#001931] font-semibold text-4xl'>Oops, page not found!</h1>
                 <p className='text-[#627382] text-xl mt-3'>The page you are looking for is not available.</p>
                 
-                <button 
+                <animated.button 
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                style={buttonAnimation}
                 className='mt-4 font-semibold text-base text-white rounded-sm py-4 px-10
-                bg-gradient-to-r from-[#1E2E4F] to-[#395886] cursor-pointer hover:scale-105'>Go Back!
-                </button>
+                bg-gradient-to-r from-[#1E2E4F] to-[#395886] cursor-pointer '>Go Back!
+                </animated.button>
                 
             </div>
         </div>
            </div>
-           <Footer></Footer>
+           
         </>
     );
 };

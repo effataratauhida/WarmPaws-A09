@@ -7,7 +7,7 @@ const Contact = () => {
                 <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Have a questions?
                     <br />
                     Contact us now</h2>
-                <div className='bg-white mt-10'>
+                <div className='bg-white mt-10 '>
                     <div className='max-w-11/12 mx-auto py-10 flex items-center justify-between '>
                     <div>
                         <h3 className='text-3xl font-bold text-[#31487A]'>We Are Always Available For You & Your Pets</h3>

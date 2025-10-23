@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import ratingsIcon from '../../assets/icon-ratings.png'
 import petService from '../../assets/petService.jpg'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Services = () => {
 
    const services = useLoaderData();
+
+   useEffect(() => {
+        AOS.init({
+        duration: 1000, 
+        once: true,
+       });
+    }, []);
 
    return (
         <div className='bg-[#D5DEEF] py-10'>
             <div className='max-w-11/12 mx-auto'>
             <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Our Services</h2>
              
-             <div className='flex gap-5 mt-14'>
+             <div data-aos="fade-up"
+             className='flex gap-5 mt-14'>
                 <img src={petService} alt="" className='w-1/3 rounded-sm ' />
                 <div>
                     <ul>
@@ -46,7 +57,8 @@ const Services = () => {
             <div className=' pt-14'>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {services.map((service) => (
-                    <div key={service.serviceId} className='bg-white p-4 rounded-sm h-[680px] '>
+                    <div key={service.serviceId} data-aos="fade-up"
+                    className='bg-white p-4 rounded-sm h-[680px] '>
                             <img src={service.image} alt="" className='w-full rounded-lg h-3/4'/>
                                 <h2 className='font-bold text-xl text-[#31487A] mt-4'>{service.serviceName}</h2>
                                 <div className='flex items-center justify-between mt-4'>
