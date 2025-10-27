@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router';
+import React, {  useContext, useState } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router';
 import logo from '../../assets/logo.webp'
 import '../Header/Header.css'
 import { IoPersonCircle } from 'react-icons/io5';
 import { useSpring, animated } from '@react-spring/web';
+import { AuthContext } from '../../provider/AuthProvider';
+import Register from './../../Pages/Register/Register';
+
 
 
 const Navbar = () => {
 
-    // useSpring
-    
-        const [hovered, setHovered] = useState(false);
-        const buttonAnimation = useSpring({
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+
+     // useSpring for login btn
+    const [hovered, setHovered] = useState(false);
+    const buttonAnimation = useSpring({
             from: { opacity: 0, transform: 'scale(0.9)' },
             to: { 
                 opacity: 1, 
@@ -19,7 +27,19 @@ const Navbar = () => {
             },
             config: { tension: 200, friction: 10 },
         })
-    const AnimatedLink = animated(Link);
+         const AnimatedLink = animated(Link);
+
+        // useSpring for register btn
+        const [regHovered, setRegHovered] = useState(false);
+        const regButtonAnimation = useSpring({
+            from: { opacity: 0, transform: 'scale(0.9)' },
+            to: { 
+                opacity: 1, 
+                transform: regHovered ? 'scale(1.05)' : 'scale(1)',
+            },
+            config: { tension: 200, friction: 10 },
+        })
+        const RegAnimatedLink = animated(Link);
 
     return (
         <div className='bg-white'>
@@ -39,7 +59,22 @@ const Navbar = () => {
                     <NavLink to='/services' >Services</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/myProfile'>My Profile</NavLink>
+                   <button 
+                    onClick={() => {
+                    if(user){
+                        navigate("/myProfile");
+                    } else {
+                        navigate("/auth/login", { state: { from: "/myProfile" } });
+                    }
+                    }}
+                    className={` ${
+                      location.pathname === "/myProfile"
+                      ? "text-[#395886] font-bold text-lg underline decoration-[#395886] underline-offset-4"
+                      : "text-[#31487A] font-medium text-base"
+                    }`}
+                    >
+                      My Profile
+                    </button>
                 </li>
                 
         </ul>
@@ -62,34 +97,91 @@ const Navbar = () => {
                             <NavLink to='/services'>Services</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/myProfile' >My Profile</NavLink>
+                           
+                            <button 
+                              onClick={() => {
+                                if(user){
+                                  navigate("/myProfile");
+                                } else {
+                                  navigate("/auth/login", { state: { from: "/myProfile" } });
+                                }
+                              }}
+                              className={` ${
+                                location.pathname === "/myProfile"
+                                ? "text-[#395886] font-bold text-lg underline decoration-[#395886] underline-offset-4"
+                                : "text-[#31487A] font-medium text-base"
+                              }`}
+                            >
+                              My Profile
+                            </button>
                         </li>
                         
                         
                     </ul>
                 </div>
                 <div className="navbar-end gap-3">
-                    <IoPersonCircle size={40} />
-
-                    <AnimatedLink 
-                    to="/auth/login" 
+                     {/* <IoPersonCircle size={40} /> */}
+                     {/* for large and medium device */}
+                    <div className="hidden md:flex gap-3">
+                        <AnimatedLink 
+                        to="/auth/login" 
                         onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                style={buttonAnimation}  
-                        className=' cursor-pointer rounded-sm 
-                        border-2 border-[#1E2E4F]
+                        onMouseLeave={() => setHovered(false)}
+                        style={buttonAnimation}  
+                        className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886]
+                        hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-base
                         gap-1.5 md:gap-2.5 py-2 px-3 md:py-2 md:px-6'>
-                            <p className='text-[#1E2E4F] font-semibold text-base'> Login</p>
+                        Login
                     </AnimatedLink>
-                    <Link 
-                    to="/auth/register" 
-                        className=' cursor-pointer rounded-sm 
-                        hover:scale-105 hover:border-2  hover:border-[#1E2E4F] hover:bg-none
-                        bg-gradient-to-r from-[#1E2E4F] to-[#395886] flex items-center 
-                        gap-1.5 md:gap-2.5 py-2 px-3 md:py-2 md:px-6
-                        text-white hover:text-[#1E2E4F] font-semibold text-base'>
-                            Register
-                    </Link>
+                    <RegAnimatedLink 
+                        to="/auth/register" 
+                        onMouseEnter={() => setRegHovered(true)}
+                        onMouseLeave={() => setRegHovered(false)}
+                        style={regButtonAnimation}
+                        className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
+                        hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-base
+                        gap-1.5 md:gap-2.5 py-2 px-3 md:py-2 md:px-6'>
+                        Register
+                    </RegAnimatedLink>
+                    </div>
+
+                   
+                    
+                    <div className="dropdown md:hidden">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-black ">
+                            <IoPersonCircle size={40} />
+                         </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-[#1E2E4F] rounded-box z-2 mt-3  p-2 shadow right-0 left-auto ">
+                                <li >
+                                    <AnimatedLink 
+                                        to="/auth/login" 
+                                        onMouseEnter={() => setHovered(true)}
+                                        onMouseLeave={() => setHovered(false)}
+                                        style={buttonAnimation}  
+                                        className=' cursor-pointer rounded-sm  text-sm bg-white
+                                        text-center  hover:border-[#1E2E4F] border-2  hover:bg-none  hover:text-[#1E2E4F]  
+                                          py-1 px-3' >
+                                        Login
+                                    </AnimatedLink>
+                                </li>
+                                <li>
+                                    <RegAnimatedLink 
+                                        to="/auth/register" 
+                                        onMouseEnter={() => setRegHovered(true)}
+                                        onMouseLeave={() => setRegHovered(false)}
+                                        style={regButtonAnimation}
+                                        className='mt-2 cursor-pointer rounded-sm bg-white border-2
+                                        hover:border-[#1E2E4F] hover:bg-none  hover:text-[#1E2E4F]  text-sm text-center
+                                         py-1 px-3 '>
+                                        Register
+                                    </RegAnimatedLink>
+                                </li>
+                               
+                
+                        </ul>
+                    </div>
                     
                 </div>
             </div>

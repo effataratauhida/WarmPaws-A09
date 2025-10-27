@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import Root from '../Pages/Root/Root';
 import Error from '../Pages/Error Page/Error';
 import Home from '../Pages/Home/Home';
@@ -9,6 +9,8 @@ import ServiceDetails from '../Pages/Service Details/ServiceDetails';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import AuthLayout from '../layouts/AuthLayout';
+import MyProfile from '../Pages/My Profile/MyProfile';
+import PrivateRoute from '../Components/PrivateRoute';
 
 
 
@@ -30,9 +32,21 @@ export const router = createBrowserRouter([
         }, 
         {
           path: '/serviceDetails/:id',
-          element: <ServiceDetails></ServiceDetails>,
+          element: ( 
+            <PrivateRoute>
+              <ServiceDetails></ServiceDetails>
+            </PrivateRoute>
+            ),
           loader: () => fetch("/WinterCareData.json").then(res => res.json()),
         },
+        {
+              path: 'myProfile',
+              element: (
+                <PrivateRoute>
+                  <MyProfile></MyProfile>
+                </PrivateRoute>
+              )
+            }
          
     ]
   },
@@ -47,7 +61,8 @@ export const router = createBrowserRouter([
             {
               path: 'register',
               element: <Register></Register>
-            }
+            },
+            
           ]
         }
 ]);

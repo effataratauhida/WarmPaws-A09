@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import serviceImg from '../../assets/serviceImg.jpg'
-import { useLoaderData, useParams } from 'react-router';
+import { useLoaderData, useLocation, useParams } from 'react-router';
 import ratingsIcon from '../../assets/icon-ratings.png'
 import { toast, ToastContainer } from 'react-toastify';
 
 const ServiceDetails = () => {
 
+    const location = useLocation();
+
+    
 
     const services = useLoaderData();
     const { id } = useParams();
     
     const service = services.find( service => service.serviceId === parseInt(id));
+
+    if (!service) {
+    return (
+        <div className='text-center py-20 bg-[#D5DEEF]'>
+            <h2 className='text-4xl font-bold text-[#123277]'>404 - Service Not Found!</h2>
+            <p className='mt-4 text-lg text-[#31487A]'>Data loading failed.....</p>
+        </div>
+    );
+}
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState(''); 
