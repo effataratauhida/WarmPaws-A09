@@ -1,10 +1,11 @@
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import { getAuth, GoogleAuthProvider,  signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import React, { useContext, useRef, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../provider/AuthProvider';
 import app from '../../firebase/firebase.config';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
 
@@ -16,12 +17,15 @@ const Login = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const [error, setError] = useState('');
+  const [showPass, setShowPass] = useState(false);
+  const emailRef = useRef();
+
   
 //  email , password login
   const handleLogin = async (e) => {
       e.preventDefault();
       const form = e.target;
-      const email = form.email.value;
+      const email = emailRef.current.value;
       const password = form.password.value;
       console.log(email,password);
 
@@ -36,13 +40,13 @@ const Login = () => {
           }, 1500);
         } 
         catch (error) {
-          console.log(error.message);
-          setError(error.message);
+          //console.log(error.message);
+          setError("Didn't find any account");
         }
       };
 
   //  Google login
-      const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
         try {
           const result = await signInWithPopup(auth, provider);
           setUser(result.user);
@@ -52,15 +56,25 @@ const Login = () => {
         catch (error) {
           toast.error(error.message);
         }
-      };
+  };
 
-       return (
-        <div className='bg-[#D5DEEF] '>
+ const handleTogglePasswordShow = (event) => {
+            event.preventDefault();
+            setShowPass (!showPass);
+  }
+  const handleForgotPasswordClick = (e) => {
+        e.preventDefault(); 
+        const email = emailRef.current.value;
+        navigate('/auth/forgotPassword', { state: { initialEmail: email } }); 
+    };
 
-         <div className='max-w-11/12 mx-auto flex justify-center mt-5 pb-5'>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-                    <h2 className='font-bold text-2xl text-center text-[#304c77]'>Welcome Back!</h2>
-                    <p className='text-center text-[#304c77] mt-2'>Please enter your details to login.</p>
+    return (
+      <div className='bg-[#D5DEEF] '>
+
+        <div className='max-w-11/12 mx-auto flex justify-center mt-5 pb-5'>
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+                  <h2 className='font-bold text-2xl text-center text-[#304c77]'>Welcome Back!</h2>
+                  <p className='text-center text-[#304c77] mt-2'>Please enter your details to login.</p>
 
                   <form 
                   onSubmit={handleLogin}
@@ -69,15 +83,37 @@ const Login = () => {
 
                     {/* email */}
                     <label className="label">Email</label>
-                    <input required name='email'
-                    type="email" className="input" placeholder="Email" />
+                    <input required 
+                    name='email'
+                    type="email" 
+                    className="input" 
+                    ref={emailRef}
+                    placeholder="Email" />
                     
                     {/* password */}
                     <label className="label">Password</label>
-                    <input required name='password'
-                    type="password" className="input" placeholder="Password" />
+                    <div className='relative'>
+                      <input 
+                    required 
+                    name='password'
+                    type={showPass ? 'text' : 'password'}
+                    className="input" placeholder="Password" />
+                    <button 
+                        onClick={handleTogglePasswordShow}
+                        className="btn btn-xs absolute top-2 right-7"> 
+                        {showPass 
+                        ? <EyeOff size={16} strokeWidth={1} /> 
+                        : <Eye size={16} strokeWidth={1} />}
+                    </button>
+                    </div>
+                    
 
-          <div><a className="link link-hover">Forgot password?</a></div>
+          <div >
+            <a onClick={handleForgotPasswordClick} 
+            className="link link-hover"
+            style={{ cursor: 'pointer'}}>
+              Forgot password?</a>
+          </div>
 
           {
            error && <p className='text-red-500'>{error}</p>

@@ -5,12 +5,12 @@ import Error from '../Pages/Error Page/Error';
 import Home from '../Pages/Home/Home';
 import Services from '../Pages/Services/Services';
 import ServiceDetails from '../Pages/Service Details/ServiceDetails';
-
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import AuthLayout from '../layouts/AuthLayout';
 import MyProfile from '../Pages/My Profile/MyProfile';
 import PrivateRoute from '../Components/PrivateRoute';
+import ForgotPassword from '../Pages/Forgot Password/ForgotPassword';
 
 
 
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
                   <MyProfile></MyProfile>
                 </PrivateRoute>
               )
-            }
+        }
          
     ]
   },
@@ -62,6 +62,11 @@ export const router = createBrowserRouter([
               path: 'register',
               element: <Register></Register>
             },
+        {
+          path: 'forgotPassword',
+          element: <ForgotPassword></ForgotPassword>
+        }
+
             
           ]
         }

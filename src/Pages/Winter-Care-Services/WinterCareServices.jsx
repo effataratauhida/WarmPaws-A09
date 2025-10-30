@@ -74,8 +74,8 @@ const WinterCareServices = () => {
 
             <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Winter Care Tips for Pets</h2>
             <div className='mt-10 md:mt-14 bg-white py-7 md:py-14'   data-aos="fade-up">
-                <div className='max-w-11/12 mx-auto flex flex-col md:flex-row justify-center items-center gap-7 md:gap-10'>
-                       <img src={winterTips} alt="" className='md:w-1/3 rounded-sm ' />
+                <div className='max-w-11/12 mx-auto flex flex-col lg:flex-row justify-center items-center gap-7 md:gap-10'>
+                       <img src={winterTips} alt="" className='lg:w-[500px] lg:h-[600px] rounded-sm ' />
                 <div>
                     <ul>
                         <li>

@@ -15,6 +15,10 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password)
     };
 
+    const signOutUser = () =>{
+        
+    }
+
    useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
         setUser(currentUser);

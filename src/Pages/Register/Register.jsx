@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast';
 import { Eye, EyeOff } from 'lucide-react';
-import { getAuth, GoogleAuthProvider, sendEmailVerification, signInWithPopup } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
 const Register = () => {
@@ -30,13 +30,14 @@ const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        //console.log(e.target);
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         const terms = form.terms.checked;
+        
         console.log({name,photo,email,password,terms});
 
         const lengthPattern = /^.{6,}$/;
@@ -44,7 +45,7 @@ const Register = () => {
         const specialCharPattern = /^(?=.*[!@#$%^&*(),.?:{}|<>|]).+$/;
 
         if(!lengthPattern.test(password)){
-            console.log('password didnt match');
+            //console.log('password didnt match');
             setError('Password must be 6 character or longer!');
             return;
         }
@@ -73,6 +74,15 @@ const Register = () => {
             setRegSuccess(true);
             form.reset();
 
+            // update user profile
+            const profile = {
+              displayName: name,
+              photoURL: photo,
+            }
+            updateProfile(user, profile)
+            .then(() => {})
+            .catch()
+
             //send verification email
             // sendEmailVerification(user)
             // .then(() => {
@@ -88,8 +98,7 @@ const Register = () => {
     };
 
      
-
-    const handleTogglePasswordShow = (event) => {
+  const handleTogglePasswordShow = (event) => {
             event.preventDefault();
             setShowPass (!showPass);
     }
@@ -114,7 +123,7 @@ const Register = () => {
                 
             <div className='max-w-11/12 mx-auto flex justify-center mt-5 pb-5 '>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-                    <h2 className='font-bold text-2xl text-center text-[#304c77]'>Register Your Account</h2>
+                  <h2 className='font-bold text-2xl text-center text-[#304c77]'>Register Your Account</h2>
                     
         <form onSubmit={handleRegister}
         className="card-body">
@@ -122,12 +131,20 @@ const Register = () => {
 
             {/* Name */}
             <label className="label">Name</label>
-            <input name='name' type="text" className="input" placeholder="Name"
+            <input 
+            name='name' 
+            type="text" 
+            className="input" 
+            placeholder="Name"
             required /> 
 
             {/* Photo URL */}
             <label className="label">Photo URL</label>
-            <input name='photo' type="text" className="input" placeholder="Photo URL" 
+            <input 
+            name='photo' 
+            type="text" 
+            className="input" 
+            placeholder="Photo URL" 
             required/>
 
             {/* Email */}
@@ -140,16 +157,21 @@ const Register = () => {
         <label className="label">Password</label>
           <div className='relative'>
             <input 
-             type={showPass ? 'text' : 'password'} 
-             name='password' className="input" placeholder="Password"
-            required />
-            <button onClick={handleTogglePasswordShow}
-            className="btn btn-xs absolute top-2 right-7"> 
-            {showPass 
-            ? <EyeOff size={16} strokeWidth={1} /> 
-            : <Eye size={16} strokeWidth={1} />}
+              type={showPass ? 'text' : 'password'} 
+              name='password' 
+              className="input" 
+              placeholder="Password"
+              required />
+            <button 
+              onClick={handleTogglePasswordShow}
+              className="btn btn-xs absolute top-2 right-7"> 
+              {showPass 
+              ? <EyeOff size={16} strokeWidth={1} /> 
+              : <Eye size={16} strokeWidth={1} />}
             </button>
           </div>
+
+          {/* terms & conditions */}
           <label class="label" className='mt-2 '>
             <input type="checkbox" 
             class="checkbox"  name="terms" id="" />
