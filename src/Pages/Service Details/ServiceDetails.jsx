@@ -7,9 +7,6 @@ import { toast, ToastContainer } from 'react-toastify';
 const ServiceDetails = () => {
 
     const location = useLocation();
-
-    
-
     const services = useLoaderData();
     const { id } = useParams();
     
@@ -41,7 +38,7 @@ const ServiceDetails = () => {
     };          
 
     return (
-         <div className='bg-[#D5DEEF] pt-10 pb-20'>
+         <div className='bg-[#D5DEEF] pt-6 md:pt-10 pb-20'>
 
             <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Service in Details</h2>
 
@@ -49,9 +46,9 @@ const ServiceDetails = () => {
                     <div className='max-w-11/12 mx-auto'>
                 {/* show the details of service */}
                   
-                  <div className=' flex items-center justify-center gap-10  '>
+                  <div className=' flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10  '>
                      <img src={service.image} alt="" className='w-[400px] h-[400px] rounded-sm ' />
-                     <div  >
+                     <div>
                         <h2 className='font-bold text-3xl text-[#31487A]'>{service.category}</h2>
                         <h2 className='font-bold text-xl text-[#586991] mt-4'>{service.serviceName}</h2>
                         <h3 className='mt-2 text-lg font-medium text-[#586991] '>{service.providerName}</h3>
@@ -76,12 +73,12 @@ const ServiceDetails = () => {
                 {/* book service */}
 
                 <h4 className='text-3xl md:text-5xl font-bold text-[#31487A] pt-10 text-center'>Book Service</h4>
-                <div className='flex items-center justify-center gap-5  pt-16'>
+                <div className='flex flex-col-reverse md:flex-row items-center justify-center gap-5 pt-8  md:pt-16'>
                     
                     <div className='bg-white py-16 px-20 rounded-sm'>
                         <h3 className='font-semibold text-2xl text-[#31487A] '>Request a Schedule</h3>
                         <p className='mt-2 font-semibold text-base text-[#2d3a4f]'>Your email address will not be published</p>
-                        <form action="">
+                        <form>
 
                             <input type="text" placeholder='Full Name' 
                             value={name} onChange={(e) => setName(e.target.value)}
@@ -103,7 +100,7 @@ const ServiceDetails = () => {
                         </form>
                         </div>
                                 {/* img */}
-                        <img src={serviceImg} alt="" className='w-1/3 h-[400px] rounded-sm' />
+                        <img src={serviceImg} alt="" className='h-[350px] md:w-1/3 md:h-[400px] rounded-sm' />
                 </div>
 
                 <ToastContainer 

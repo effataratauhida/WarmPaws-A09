@@ -11,7 +11,8 @@ const PrivateRoute = ({ children }) => {
     if (loading) {
         return (
         <div className="flex justify-center items-center h-screen bg-[#D5DEEF] py-20">
-            <p className="text-xl font-semibold text-[#31487A]">Checking Authentication...</p>
+            <p className="text-xl font-semibold text-[#31487A]">
+                <span className="loading loading-spinner loading-xl"></span></p>
         </div>
     );
     }

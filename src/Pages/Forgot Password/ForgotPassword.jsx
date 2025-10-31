@@ -15,10 +15,12 @@ const ForgotPassword = () => {
       const handleResetPassword = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
-        console.log('reset password', email);
+        //console.log('reset password', email);
         sendPasswordResetEmail(auth, email)
         .then(() => {
             toast.success('Password reset link sent!')
+            //Redirect the user to Gmail
+            window.open('https://mail.google.com', '_blank');
         })
         .catch((error) => {
             toast.error(error.message || 'Failed to send reset email.');
