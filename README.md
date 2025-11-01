@@ -32,14 +32,14 @@ The project aims to:
 ---
 
 
-## 🧩 **Technologies & Packages Used**
+## 🧩 **Technologies & NPM Packages Used**
 
 | Package | Description |
 
-| **React** - Frontend library |
-| **React Router DOM** - Routing and navigation |
-| **AOS** - Scroll animations for elements |
-| **react-hot-toast** - Toast notifications |
-| **react-spring** - Smooth animations and transitions |
-| **Tailwind CSS** - Styling and responsive design |
-| **Firebase** - Authentication and user state management |
+- | **React** - Frontend library |
+- | **React Router DOM** - Routing and navigation |
+- | **AOS** - Scroll animations for elements |
+- | **react-hot-toast** - Toast notifications |
+- | **react-spring** - Smooth animations and transitions |
+- | **Tailwind CSS** - Styling and responsive design |
+- | **Firebase** - Authentication and user state management |
