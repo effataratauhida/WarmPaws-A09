@@ -58,9 +58,12 @@ const Services = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {services.map((service) => (
                     <div key={service.serviceId} data-aos="fade-up"
-                    className='bg-white p-4 rounded-sm h-[360px] lg:h-[500px] '>
-                            <img src={service.image} alt="" className='w-full rounded-lg h-[200px] lg:h-[300px]'/>
+                        className='bg-white p-4 rounded-sm min-h-[360px] lg:min-h-[500px] flex flex-col justify-between'>
+                        <div>
+                             <img src={service.image} alt="" className='w-full rounded-lg h-[200px] lg:h-[300px]'/>
+
                                 <h2 className='font-bold lg:text-lg text-base text-[#31487A] mt-2 lg:mt-4'>{service.serviceName}</h2>
+
                                 <div className='flex items-center justify-between mt-2 lg:mt-4'>
                                     {/* ratings */}
                                 <button className='flex items-center bg-[#D5DEEF] text-[#26658C] gap-2 py-1 px-2  
@@ -73,15 +76,17 @@ const Services = () => {
                                       <p className='font-medium text-base text-[#26658C]'>Price: ${service.price}</p>
                                 </button>
                                 </div>
-                                <Link to={`/serviceDetails/${service.serviceId}`}>
+                        </div>
+                        
+                        <Link to={`/serviceDetails/${service.serviceId}`}>
                                      <button className='mt-4  text-white hover:scale-105 cursor-pointer rounded-sm 
                                     bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
                                      py-2 px-3 lg:py-3 lg:px-4 w-full'>View Details</button>
                                 
-                                </Link>
+                        </Link>
                                 
                                 
-                        </div>
+                    </div>
                 ))}
             </div>
             </div>

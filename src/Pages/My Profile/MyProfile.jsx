@@ -1,9 +1,10 @@
 import React, {  useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast';
+import { updateProfile } from 'firebase/auth';
 
 const MyProfile = () => {
-    const {user} = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const [showForm, setShowForm] = useState(false);
     const [name, setName] = useState(user?.displayName || '');
     const [photo, setPhoto] = useState(user?.photoURL || '');
@@ -16,6 +17,12 @@ const MyProfile = () => {
             photoURL: photo,
         })
         .then(() => {
+            //Update the user
+            setUser({
+                ...user,
+                displayName: name,
+                photoURL: photo,
+            });
             toast.success('Profile Updated Successfully!');
             setShowForm(false);
         })
@@ -46,7 +53,12 @@ const MyProfile = () => {
                         <hr className='border-[#1E2E4F]' />
 
                         <button 
-                        onClick={() => setShowForm(!showForm)}
+                        onClick={() => {
+                            
+                            setShowForm(!showForm)
+                        }}
+                            
+                            
                         className=' cursor-pointer rounded-sm mt-4
                         hover:scale-105 hover:border-2  hover:border-[#1E2E4F] hover:bg-none
                         bg-gradient-to-r from-[#1E2E4F] to-[#395886]  
