@@ -5,8 +5,6 @@ import '../Header/Header.css'
 import { IoPersonCircle } from 'react-icons/io5';
 import { useSpring, animated, a } from '@react-spring/web';
 import { AuthContext } from '../../provider/AuthProvider';
-import Register from './../../Pages/Register/Register';
-import { signOut } from 'firebase/auth';
 
 
 
@@ -15,9 +13,7 @@ const Navbar = () => {
     const { user, signOutUser, loading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    //const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-
+    
      // useSpring for login btn
     const [hovered, setHovered] = useState(false);
     const buttonAnimation = useSpring({
@@ -114,13 +110,25 @@ const Navbar = () => {
                              <span className="loading loading-spinner text-[#395886]"></span>
                         ) :
                             user ? (
-                                <div className="flex items-center gap-3 tooltip tooltip-left"
-                                data-tip={user?.displayName  || 'User'}>
+                                <div className="flex items-center gap-3 ">
                                 {user.photoURL ? (
-                                    <img src={user.photoURL} alt="Profile" 
-                                    className="w-10 h-10 rounded-full object-cover border-2 border-[#1E2E4F]"/>
+                                    <div 
+                                    className=' tooltip tooltip-left' data-tip={user?.displayName  || 'User'}>
+                                        <img 
+                                    src={user.photoURL} 
+                                    alt="Profile" 
+                                    className="w-10 h-10 rounded-full object-cover border-2 border-[#1E2E4F]"
+                                    />
+                                    </div>
+                                    
                                 ) : (
-                                    <IoPersonCircle size={40} className='text-[#1E2E4F]' /> 
+                                    <div  
+                                     className=' tooltip tooltip-left' data-tip={user?.displayName  || 'User'}>
+                                        <IoPersonCircle size={40} 
+                                    className='text-[#1E2E4F]' 
+                                    />
+                                    </div>
+                                     
                                 )}
                                    <a onClick={handleSignOut} 
                                    className=' cursor-pointer rounded-sm 

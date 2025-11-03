@@ -18,6 +18,7 @@ const Services = () => {
 
    return (
         <div className='bg-[#D5DEEF] py-7 md:py-10'>
+            <title>Services</title>
             <div className='max-w-11/12 mx-auto'>
             <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Our Services</h2>
              
@@ -81,7 +82,8 @@ const Services = () => {
                         <Link to={`/serviceDetails/${service.serviceId}`}>
                                      <button className='mt-4  text-white hover:scale-105 cursor-pointer rounded-sm 
                                     bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
-                                     py-2 px-3 lg:py-3 lg:px-4 w-full'>View Details</button>
+                                     py-2 px-3 lg:py-3 lg:px-4 w-full
+                                     hover:border-2 hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F]'>View Details</button>
                                 
                         </Link>
                                 

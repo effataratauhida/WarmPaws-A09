@@ -39,6 +39,7 @@ const ServiceDetails = () => {
 
     return (
          <div className='bg-[#D5DEEF] pt-6 md:pt-10 pb-20'>
+            <title>{service.serviceName}</title>
 
             <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Service in Details</h2>
 
@@ -70,6 +71,7 @@ const ServiceDetails = () => {
                   </div>
                  </div>
                </div>
+
                 {/* book service */}
 
                 <h4 className='text-3xl md:text-5xl font-bold text-[#31487A] pt-10 text-center'>Book Service</h4>
@@ -91,9 +93,11 @@ const ServiceDetails = () => {
 
                             <button onClick={handleSubmit}
                              className='hover:scale-105 cursor-pointer rounded-sm mt-5
-                                bg-gradient-to-r from-[#1E2E4F] to-[#395886]  flex items-center justify-center gap-1.5 md:gap-2.5 py-2 px-3 md:py-3 md:px-4 w-full'>
+                                bg-gradient-to-r from-[#1E2E4F] to-[#395886]  flex items-center 
+                                justify-center gap-1.5 md:gap-2.5 py-2 px-3 md:py-3 md:px-4 w-full
+                                 '>
                     
-                                <p className='text-white font-semibold text-base'>Book Now</p>
+                                <p className='text-white font-semibold text-base '>Book Now</p>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
                             </button>

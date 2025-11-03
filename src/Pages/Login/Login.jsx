@@ -70,6 +70,7 @@ const Login = () => {
 
     return (
       <div className='bg-[#D5DEEF] '>
+        <title>Login</title>
 
         <div className='max-w-11/12 mx-auto flex justify-center mt-5 pb-5'>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
@@ -108,22 +109,22 @@ const Login = () => {
                     </div>
                     
 
-          <div >
+        <div >
             <a onClick={handleForgotPasswordClick} 
             className="link link-hover"
             style={{ cursor: 'pointer'}}>
               Forgot password?</a>
-          </div>
+        </div>
 
-          {
-           error && <p className='text-red-500'>{error}</p>
+        {
+          error && <p className='text-red-500'>{error}</p>
         }
 
           <button type='submit'
           className="btn bg-gradient-to-r from-[#1E2E4F] to-[#395886] text-white mt-4">
-            Login</button>
+          Login</button>
 
-              <p className='text-center text-[#304c77] text-base font-medium mt-2'>or,</p>
+          <p className='text-center text-[#304c77] text-base font-medium mt-2'>or,</p>
 
           <button 
           onClick={handleGoogleLogin}

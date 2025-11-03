@@ -15,22 +15,25 @@ const ForgotPassword = () => {
       const handleResetPassword = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
-        //console.log('reset password', email);
+        
         sendPasswordResetEmail(auth, email)
         .then(() => {
             toast.success('Password reset link sent!')
-            //Redirect the user to Gmail
+            setTimeout(() => {
+                //Redirect the user to Gmail
             window.open('https://mail.google.com', '_blank');
+            }, 1000);
+            
+            
         })
         .catch((error) => {
             toast.error(error.message || 'Failed to send reset email.');
         })
     } 
 
-
-
     return (
         <div className='bg-[#D5DEEF]' >
+            <title>Forget Password</title>
             <div className='max-w-11/12 mx-auto flex justify-center mt-5 py-20'>
                  <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl px-5 py-5">
                     <form onSubmit={handleResetPassword}>

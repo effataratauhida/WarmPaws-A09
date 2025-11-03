@@ -9,15 +9,15 @@ import app from '../../firebase/firebase.config';
 
 const Register = () => {
 
-    const { createUser, setUser} = useContext(AuthContext);
-    const [regSuccess, setRegSuccess] = useState(false);
-    const [error, setError] = useState('');
-    const [showPass, setShowPass] = useState(false);
-    const navigate = useNavigate();
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
+  const { createUser, setUser} = useContext(AuthContext);
+  const [regSuccess, setRegSuccess] = useState(false);
+  const [error, setError] = useState('');
+  const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate();
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
 
-    useEffect(() => {
+  useEffect(() => {
         if (regSuccess) {
             toast.success("Account created successfully!");
             setRegSuccess(false); 
@@ -26,11 +26,11 @@ const Register = () => {
             navigate('/');;
           }, 1500);
         } 
-    }, [regSuccess, navigate]);
+  }, [regSuccess, navigate]);
 
-    const handleRegister = (e) => {
+  const handleRegister = (e) => {
         e.preventDefault();
-        //console.log(e.target);
+        
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
@@ -38,14 +38,12 @@ const Register = () => {
         const password = form.password.value;
         const terms = form.terms.checked;
         
-        console.log({name,photo,email,password,terms});
-
         const lengthPattern = /^.{6,}$/;
         const casePattern = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
         const specialCharPattern = /^(?=.*[!@#$%^&*(),.?:{}|<>|]).+$/;
 
         if(!lengthPattern.test(password)){
-            //console.log('password didnt match');
+            
             setError('Password must be 6 character or longer!');
             return;
         }
@@ -95,7 +93,7 @@ const Register = () => {
             const errorMessage = error.message;
             setError(errorMessage);
         })
-    };
+  };
 
      
   const handleTogglePasswordShow = (event) => {
@@ -104,7 +102,7 @@ const Register = () => {
     }
 
     //  Google login
-      const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
         try {
           const result = await signInWithPopup(auth, provider);
           setUser(result.user);
@@ -114,11 +112,12 @@ const Register = () => {
         catch (error) {
           toast.error(error.message);
         }
-      };
+  };
 
 
     return (
         <div>
+          <title>Register</title>
             <div className='bg-[#D5DEEF] '>
                 
             <div className='max-w-11/12 mx-auto flex justify-center mt-5 pb-5 '>

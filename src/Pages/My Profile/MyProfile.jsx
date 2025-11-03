@@ -1,39 +1,54 @@
 import React, {  useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast';
-import { updateProfile } from 'firebase/auth';
+import { getAuth, updateProfile } from 'firebase/auth';
 
 const MyProfile = () => {
-    const { user, setUser } = useContext(AuthContext);
+    const { user,  setUser } = useContext(AuthContext);
     const [showForm, setShowForm] = useState(false);
+    
     const [name, setName] = useState(user?.displayName || '');
     const [photo, setPhoto] = useState(user?.photoURL || '');
-
-    const handleUpdateProfile = (e) => {
+    
+    const handleUpdateProfile = async (e) => {
         e.preventDefault();
+        if (!user) {
+            toast.error("User not found.");
+            return;
+        }
 
-        updateProfile ( user, {
-            displayName: name,
-            photoURL: photo,
-        })
-        .then(() => {
-            //Update the user
-            setUser({
-                ...user,
-                displayName: name,
-                photoURL: photo,
-            });
-            toast.success('Profile Updated Successfully!');
-            setShowForm(false);
-        })
-        .catch((error) => {
-            toast.error(error.message);
-        })
+    const updatedPhoto = photo.trim() === '' ? user.photoURL : photo;
+    const auth = getAuth();
+
+    try {
+      // Firebase profile update
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: updatedPhoto,
+    });
+    await auth.currentUser.reload();
+
+     const updatedUser = auth.currentUser;
+     setUser({ ...updatedUser });
+
+
+      // Toast success
+    toast.success("Profile Updated Successfully!");
+
+     setShowForm(false);
+     
+
+    } catch (error) {
+        console.log(error)
+      toast.error(error.message);
     }
-
+  };
+    
     
     return (
+        
         <div className='bg-[#D5DEEF] py-6 md:py-20'>
+            <title>My Profile</title>
                 
                 <div className='max-w-11/12 mx-auto'>
                 <div className="flex flex-col md:flex-row items-center justify-center md:gap-10 gap-6 px-10 py-10  ">
@@ -52,15 +67,13 @@ const MyProfile = () => {
                         
                         <hr className='border-[#1E2E4F]' />
 
+                         {/* update profile btn */}
                         <button 
                         onClick={() => {
-                            
                             setShowForm(!showForm)
                         }}
-                            
-                            
                         className=' cursor-pointer rounded-sm mt-4
-                        hover:scale-105 hover:border-2  hover:border-[#1E2E4F] hover:bg-none
+                        hover:scale-105 hover:border-2 hover:border-[#1E2E4F] hover:bg-none
                         bg-gradient-to-r from-[#1E2E4F] to-[#395886]  
                          py-2 px-3 md:py-2 md:px-6
                         text-white hover:text-[#1E2E4F] font-semibold text-base'>
@@ -110,8 +123,6 @@ const MyProfile = () => {
                             Save Changes
                         </button>
 
-                        
-            
                     </form>
                 )
                 }

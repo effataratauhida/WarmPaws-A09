@@ -64,12 +64,12 @@ const WinterCareServices = () => {
                             </div>
                             
 
-                                <button  onClick={() => handleViewDetails(service.serviceId)}
-                                   className='mt-3 lg:mt-4  text-white hover:scale-105 cursor-pointer rounded-sm 
-                                    bg-gradient-to-r from-[#1E2E4F] to-[#395886] text-sm md:text-base
-                                     py-2 px-3 lg:py-3 lg:px-4 w-full'
-                                > View Details
-                                </button>
+                            <button  onClick={() => handleViewDetails(service.serviceId)}
+                                className='mt-3 lg:mt-4  text-white hover:scale-105 cursor-pointer rounded-sm 
+                                bg-gradient-to-r from-[#1E2E4F] to-[#395886] text-sm md:text-base
+                                py-2 px-3 lg:py-3 lg:px-4 w-full hover:border-2 hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F]'
+                            > View Details
+                            </button>
                     </div>
                 ))}
             </div>

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import errorImg from '../../assets/errorImg.jpg'
 import { useSpring, animated } from '@react-spring/web';
+import { useNavigate } from 'react-router';
 
 
 const Error = () => {
 
-    // useSpring
+    const navigate = useNavigate();
 
+    // useSpring
+ 
     const [hovered, setHovered] = useState(false);
     const buttonAnimation = useSpring({
         from: { opacity: 0, transform: 'scale(0.9)' },
@@ -17,8 +20,13 @@ const Error = () => {
         config: { tension: 200, friction: 10 },
     });
 
+    const handleGoBack = () => {
+        navigate('/'); 
+    };
+
     return (
         <>
+        <title>Error - 404 </title>
           
            <div >
             <div className='max-w-11/12 mx-auto flex flex-col items-center justify-center pb-10'>
@@ -30,9 +38,11 @@ const Error = () => {
                 <animated.button 
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
+                onClick={handleGoBack}
                 style={buttonAnimation}
                 className='mt-4 font-semibold text-base text-white rounded-sm py-4 px-10
-                bg-gradient-to-r from-[#1E2E4F] to-[#395886] cursor-pointer '>Go Back!
+                bg-gradient-to-r from-[#1E2E4F] to-[#395886] cursor-pointer 
+                hover:scale-105 hover:border-2  hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F] '>Go Back!
                 </animated.button>
                 
             </div>
