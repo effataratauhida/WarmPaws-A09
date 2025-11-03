@@ -147,8 +147,8 @@ const Navbar = () => {
                         onMouseLeave={() => setHovered(false)}
                         style={buttonAnimation}  
                         className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886]
-                        hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-base
-                        py-1 px-2 md:py-2 md:px-6'>
+                        hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-sm sm:text-base
+                        py-1 px-2  sm:py-2 sm:px-3 md:py-2 md:px-6'>
                         Login
                                 </AnimatedLink>
                                 {/* Register btn */}
@@ -158,8 +158,8 @@ const Navbar = () => {
                         onMouseLeave={() => setRegHovered(false)}
                         style={regButtonAnimation}
                         className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
-                        hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-base
-                         py-1 px-2 md:py-2 md:px-6'>
+                        hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-sm sm:text-base
+                         py-1 px-2 sm:py-2 sm:px-3 md:py-2 md:px-6'>
                         Register
                                 </RegAnimatedLink>
                                 </> 
