@@ -18,7 +18,7 @@ const Footer = () => {
                     </Link>
 
                     {/* social links */}
-                       <div className='mt-6 text-white flex gap-4'>
+                       <div className='mt-6 text-white flex  gap-3'>
 
                         {/* facebook */}
 

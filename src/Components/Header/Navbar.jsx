@@ -80,7 +80,7 @@ const Navbar = () => {
                         <img className='md:w-10 md:h-10 w-7 h-7' src={logo} alt="" />
                       <h2 className='text-[#26658C] font-bold text-lg'>
                      WarmPaws <br /> 
-                     <p className='text-base font-normal'>Pet Care in Winter</p>
+                     <p className='text-sm sm:text-base font-normal'>Pet Care in Winter</p>
                      </h2>
                      
                     </Link>
@@ -148,7 +148,7 @@ const Navbar = () => {
                         style={buttonAnimation}  
                         className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886]
                         hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-base
-                        py-2 px-3 md:py-2 md:px-6'>
+                        py-1 px-2 md:py-2 md:px-6'>
                         Login
                                 </AnimatedLink>
                                 {/* Register btn */}
@@ -159,7 +159,7 @@ const Navbar = () => {
                         style={regButtonAnimation}
                         className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
                         hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-base
-                         py-2 px-3 md:py-2 md:px-6'>
+                         py-1 px-2 md:py-2 md:px-6'>
                         Register
                                 </RegAnimatedLink>
                                 </> 

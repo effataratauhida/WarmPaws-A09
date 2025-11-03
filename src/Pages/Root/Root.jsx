@@ -22,6 +22,7 @@ const Root = () => {
     return (
         <div>
             <Navbar></Navbar>
+            {import.meta.env.VITE_name}
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
