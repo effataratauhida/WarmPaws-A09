@@ -20,11 +20,11 @@ const Services = () => {
         <div className='bg-[#D5DEEF] py-7 md:py-10'>
             <title>Services</title>
             <div className='max-w-11/12 mx-auto'>
-            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center'>Our Services</h2>
+            <h2 className='text-4xl  font-bold text-[#31487A] text-center'>Our Services</h2>
              
              <div data-aos="fade-up"
              className='flex flex-col lg:flex-row gap-5 mt-7 lg:mt-14 h-600px'>
-                <img src={petService} alt="" className='lg:w-1/3 md:h-[400px] lg:h-[500px]   rounded-sm ' />
+                <img src={petService} alt="" className='lg:w-1/3  rounded-sm ' />
                 <div>
                     <ul>
                         <li>
@@ -56,12 +56,12 @@ const Services = () => {
              </div>
 
             <div className=' pt-14'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {services.map((service) => (
                     <div key={service.serviceId} data-aos="fade-up"
-                        className='bg-white p-4 rounded-sm min-h-[360px] lg:min-h-[500px] flex flex-col justify-between'>
+                        className='bg-white p-4 rounded-sm  flex flex-col justify-between'>
                         <div>
-                             <img src={service.image} alt="" className='w-full rounded-lg h-[200px] lg:h-[300px]'/>
+                             <img src={service.image} alt="" className='w-full rounded-lg h-[200px] '/>
 
                                 <h2 className='font-bold lg:text-lg text-base text-[#31487A] mt-2 lg:mt-4'>{service.serviceName}</h2>
 
@@ -82,7 +82,7 @@ const Services = () => {
                         <Link to={`/serviceDetails/${service.serviceId}`}>
                                      <button className='mt-4  text-white hover:scale-105 cursor-pointer rounded-sm 
                                     bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
-                                     py-2 px-3 lg:py-3 lg:px-4 w-full
+                                     py-2 px-3  lg:px-4 w-full
                                      hover:border-2 hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F]'>View Details</button>
                                 
                         </Link>

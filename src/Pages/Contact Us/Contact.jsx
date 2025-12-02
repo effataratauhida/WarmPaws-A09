@@ -2,15 +2,15 @@ import React from 'react';
 
 const Contact = () => {
     return (
-        <div className='bg-[#D5DEEF] pt-10 pb-10 md:pb-20'>
+        <div className='bg-[#D5DEEF]  pb-10 md:pb-20'>
            
-                <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Have a questions?
+                <h2 className='text-4xl  font-bold text-[#31487A] text-center '>Have a questions?
                     <br />
                     Contact us now</h2>
                 <div className='bg-white mt-10 '>
                     <div className='max-w-11/12 mx-auto py-10 flex flex-col md:flex-row items-center justify-between '>
                     <div>
-                        <h3 className='text-2xl text-center md:text-left md:text-3xl font-bold text-[#31487A]'>We Are Always Available For You & Your Pets</h3>
+                        <h3 className='text-2xl text-center md:text-left  font-bold text-[#31487A]'>We Are Always Available For You & Your Pets</h3>
                     <h4 className='my-4 text-xl font-bold text-[#31487A]'>Information:</h4>
                     
                     {/* call */}
@@ -37,7 +37,7 @@ const Contact = () => {
                      {/* form */}
 
                      <div>
-                        <h3 className='text-3xl font-bold text-[#31487A] mt-4 md:mt-0 text-center md:text-left'>Get In Touch</h3>
+                        <h3 className='text-2xl font-bold text-[#31487A] mt-4 md:mt-0 text-center md:text-left'>Get In Touch</h3>
                         <form action="">
                             <input type="text" placeholder='Name' className='mt-5 px-5 py-3 bg-[#D5DEEF] rounded-sm shadow-sm text-blue-950 w-full'/>
                             <input type="email" placeholder='Email' 

@@ -18,13 +18,13 @@ const WinterCareServices = () => {
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
 
-    const handleViewDetails = (id) => {
-    if (user) {
-      navigate(`/serviceDetails/${id}`);
-    } else {
-      navigate('/auth/login', { state: { from: `/serviceDetails/${id}` } });
-    }
-    };
+    // const handleViewDetails = (id) => {
+    // if (user) {
+    //   navigate(`/serviceDetails/${id}`);
+    // } else {
+    //   navigate('/auth/login', { state: { from: `/serviceDetails/${id}` } });
+    // }
+    // };
 
     useEffect(() => {
         AOS.init({
@@ -36,17 +36,17 @@ const WinterCareServices = () => {
        return (
         <div className='bg-[#D5DEEF] '>
             <div className='max-w-11/12 mx-auto md:py-14 py-10'>
-                <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Popular Winter Care Services</h2>
+                <h2 className='text-4xl font-bold text-[#31487A] text-center '>Popular Winter Care Services</h2>
 
                 {/*  card layout */}
             <div className='md:pt-14 pt-10'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {services.map((service) => (
                     <div key={service.serviceId}   data-aos="fade-up"
-                    className='bg-white p-4 rounded-sm  lg:min-h-[500px] min-h-[360px] 
+                    className='bg-white p-4 rounded-sm   
                     flex flex-col justify-between'>
                             <div>
-                                <img src={service.image} alt="" className='w-full rounded-lg  h-[200px] lg:h-[300px]'/>
+                                <img src={service.image} alt="" className='w-full rounded-lg  h-[200px] '/>
 
                                 <h2 className='font-bold lg:text-lg text-base text-[#31487A] mt-3 lg:mt-4 '>{service.serviceName}</h2>
 
@@ -63,13 +63,19 @@ const WinterCareServices = () => {
                                 </div>
                             </div>
                             
-
-                            <button  onClick={() => handleViewDetails(service.serviceId)}
+                            <Link to={`/serviceDetails/${service.serviceId}`}
+                            className='mt-3 lg:mt-4  text-white hover:scale-105 cursor-pointer rounded-sm text-center
+                                bg-linear-to-r from-[#1E2E4F] to-[#395886] text-sm md:text-base
+                                py-2 px-3  lg:px-4 w-full hover:border-2 hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F]'>
+                                    View Details
+                                </Link>
+                          
+                            {/* <button  onClick={() => handleViewDetails(service.serviceId)}
                                 className='mt-3 lg:mt-4  text-white hover:scale-105 cursor-pointer rounded-sm 
                                 bg-gradient-to-r from-[#1E2E4F] to-[#395886] text-sm md:text-base
-                                py-2 px-3 lg:py-3 lg:px-4 w-full hover:border-2 hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F]'
+                                py-2 px-3  lg:px-4 w-full hover:border-2 hover:border-[#1E2E4F] hover:bg-none hover:text-[#1E2E4F]'
                             > View Details
-                            </button>
+                            </button> */}
                     </div>
                 ))}
             </div>
@@ -78,10 +84,10 @@ const WinterCareServices = () => {
 
             {/* Winter Care Tips for Pets section */}
 
-            <h2 className='text-3xl md:text-5xl font-bold text-[#31487A] text-center '>Winter Care Tips for Pets</h2>
+            <h2 className='text-4xl font-bold text-[#31487A] text-center '>Winter Care Tips for Pets</h2>
             <div className='mt-10 md:mt-14 bg-white py-7 md:py-14'   data-aos="fade-up">
                 <div className='max-w-11/12 mx-auto flex flex-col lg:flex-row justify-center items-center gap-7 md:gap-10'>
-                       <img src={winterTips} alt="" className='lg:w-[500px] lg:h-[600px] rounded-sm ' />
+                       <img src={winterTips} alt="" className='w-1/3  rounded-sm ' />
                 <div>
                     <ul>
                         <li>
@@ -118,27 +124,27 @@ const WinterCareServices = () => {
             {/* Meet Our Expert Vets section */}
             <div className='max-w-11/12 mx-auto'>
                       <h2  
-                      className='text-3xl md:text-5xl font-bold text-[#31487A] text-center pt-10 md:pt-20'>Meet Our Expert Vets</h2>
+                      className='text-4xl  font-bold text-[#31487A] text-center pt-10 md:pt-20'>Meet Our Expert Vets</h2>
             <p className='text-center mt-4 md:mt-8 font-semibold md:text-lg text-[#2d3a4f]'>Each specialist is dedicated to understanding your goals, ensuring treatments are tailored to your pets unique beauty needs</p>
             <div className='grid md:grid-cols-4 gap-4 mt-10 grid-cols-1 sm:grid-cols-2 '
-            data-aos="fade-up">
-                <div className='bg-white p-4 rounded-sm text-center '>
-                    <img src={petDentist1} alt="" className='rounded-sm w-full h-[280px]' />
+            >
+                <div className='bg-white p-4 rounded-sm text-center max-h-fit'>
+                    <img src={petDentist1} alt="" className='rounded-sm w-full h-1/2 ' />
                     <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Fabio Santoro</h4>
                     <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Pet dentist</p>
                 </div>
-                <div className='bg-white p-4 rounded-sm text-center'>
-                    <img src={vet} alt="" className='rounded-sm w-full h-[280px]' />
+                <div className='bg-white p-4 rounded-sm text-center max-h-fit'>
+                    <img src={vet} alt="" className='rounded-sm w-full h-1/2' />
                     <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Marco De Luca</h4>
                     <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Veterinarian</p>
                 </div>
-                <div className='bg-white p-4 rounded-sm text-center'>
-                    <img src={dogGroomer} alt="" className='rounded-sm w-full h-[280px]' />
+                <div className='bg-white p-4 rounded-sm text-center max-h-fit'>
+                    <img src={dogGroomer} alt="" className='rounded-sm w-full h-1/2' />
                     <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Martina Greco</h4>
                     <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Dog groomer</p>
                 </div>
-                <div className='bg-white p-4 rounded-sm text-center'>
-                    <img src={catGroomer} alt="" className='rounded-sm w-full h-[280px]' />
+                <div className='bg-white p-4 rounded-sm text-center max-h-fit'>
+                    <img src={catGroomer} alt="" className='rounded-sm w-full h-1/2' />
                     <h4 className='font-semibold text-2xl mt-4 text-[#2d3a4f]'>Enzo Romano</h4>
                     <p className='mt-2 font-semibold text-lg text-[#2d3a4f]'>Cat groomer</p>
                 </div>

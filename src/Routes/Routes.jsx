@@ -45,9 +45,9 @@ export const router = createBrowserRouter([
         {
           path: '/serviceDetails/:id',
           element: ( 
-            <PrivateRoute>
+            
               <ServiceDetails></ServiceDetails>
-            </PrivateRoute>
+            
             ),
           loader: () => fetch("/WinterCareData.json").then(res => res.json()),
         },
