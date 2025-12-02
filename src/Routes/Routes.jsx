@@ -11,6 +11,8 @@ import AuthLayout from '../layouts/AuthLayout';
 import MyProfile from '../Pages/My Profile/MyProfile';
 import PrivateRoute from '../Components/PrivateRoute';
 import ForgotPassword from '../Pages/Forgot Password/ForgotPassword';
+import Contacts from '../Pages/ContactNav/Contacts';
+import About from './../Pages/About/About';
 
 
 
@@ -28,6 +30,16 @@ export const router = createBrowserRouter([
         {
             path: '/services',
             element: <Services></Services>,
+            loader: () => fetch("/WinterCareData.json").then(res => res.json()),
+        }, 
+         {
+            path: '/about',
+            element: <About></About> ,
+            loader: () => fetch("/WinterCareData.json").then(res => res.json()),
+        },
+         {
+            path: '/contact',
+            element: <Contacts></Contacts> ,
             loader: () => fetch("/WinterCareData.json").then(res => res.json()),
         }, 
         {

@@ -16,14 +16,18 @@ const Navbar = () => {
     
      // useSpring for login btn
     const [hovered, setHovered] = useState(false);
-    const buttonAnimation = useSpring({
-            from: { opacity: 0, transform: 'scale(0.9)' },
-            to: { 
-                opacity: 1, 
-                transform: hovered ? 'scale(1.05)' : 'scale(1)',
-            },
-            config: { tension: 200, friction: 10 },
-        })
+    // const buttonAnimation = useSpring({
+    //         from: { opacity: 0, transform: 'scale(0.9)' },
+    //         to: { 
+    //             opacity: 1, 
+    //             transform: hovered ? 'scale(1.05)' : 'scale(1)',
+    //         },
+    //         config: { tension: 200, friction: 10 },
+    //     })
+   const buttonAnimation = useSpring({
+    transform: hovered ? 'scale(1.05)' : 'scale(1)',
+    config: { tension: 200, friction: 10 },
+})
          const AnimatedLink = animated(Link);
 
         // useSpring for register btn
@@ -68,13 +72,20 @@ const Navbar = () => {
                     <NavLink to='/services' >Services</NavLink>
                 </li>
                 <li>
+                    <NavLink to='/about' >About Us</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/contact' >Contact</NavLink>
+                </li>
+                {/* <li>
                     <NavLink
                         to="/myProfile"
                         className={({ isActive }) => (isActive ? "active" : "")}
                         >My Profile
                     </NavLink>    
-                </li>
+                </li> */}
         </ul>
+        
                     </div>
                     <Link to='/' className="flex items-center gap-1 hover:scale-105 ">
                         <img className='md:w-10 md:h-10 w-7 h-7' src={logo} alt="" />
@@ -95,12 +106,19 @@ const Navbar = () => {
                             <NavLink to='/services'>Services</NavLink>
                         </li>
                         <li>
+                    <NavLink to='/about' >About Us</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/contact' >Contact</NavLink>
+                </li>
+                        {/* my profile */}
+                        {/* <li>
                            <NavLink
                                 to="/myProfile"
                                 className={({ isActive }) => (isActive ? "active" : "")}
                                 >My Profile
                             </NavLink>  
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
@@ -156,7 +174,7 @@ const Navbar = () => {
                                     to="/auth/register" 
                         onMouseEnter={() => setRegHovered(true)}
                         onMouseLeave={() => setRegHovered(false)}
-                        style={regButtonAnimation}
+                        style={buttonAnimation}
                         className=' cursor-pointer rounded-sm bg-gradient-to-r from-[#1E2E4F] to-[#395886] 
                         hover:border-[#1E2E4F] border-2 hover:bg-none text-white hover:text-[#1E2E4F] font-semibold text-sm sm:text-base
                          py-1 px-2 sm:py-2 sm:px-3 md:py-2 md:px-6'>
